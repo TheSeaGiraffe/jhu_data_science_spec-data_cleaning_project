@@ -1,0 +1,5 @@
+# Ignore all data files
+/data/
+
+# Ignore anything with 'tmp' in its name
+*tmp*
