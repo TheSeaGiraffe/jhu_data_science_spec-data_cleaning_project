@@ -1,6 +1,6 @@
 #
-#   clean_smartphone_data.R - a script to test the code for loading in the data
-#   for this project.
+#   clean_smartphone_data.R - a script to load and wrangle the data for this
+#   project with the goal of creating a tidy data set.
 #
 
 # Load the required packages
@@ -23,7 +23,7 @@ train_test_data <- file.path(data_dir, c('train', 'test'))
 # Load and wrangle data #
 #########################
 
-# Get features
+# Get features along with corresponding column index
 req_features <- get_required_features(file.path(data_dir, 'features.txt'))
 
 # Get training and test data
@@ -47,6 +47,14 @@ for (i in seq_along(train_test_data)) {
 
 # Combine the training and test data into a single data frame
 smartphone_data <- bind_rows(loaded_data)
+
+# Convert 'subject_id' and 'activity' columns to factors
+smartphone_data %<>% mutate(subject_id = as.factor(subject_id),
+                            activity = as.factor(activity))
+
+# Create final tidy data set by taking the mean of all variables for each
+# activity and each subject
+smartphone_data %<>% group_by(subject_id, activity) %>% summarize_all(mean)
 
 ############
 # Clean up #

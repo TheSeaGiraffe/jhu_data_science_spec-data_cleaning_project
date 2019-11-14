@@ -1,19 +1,10 @@
 #
-#   data_loading_functions.R - a script containing prototypes of the functions
-#   that I plan to include in the final version of this project
+#   data_loading_functions.R - a script containing the functions used to load
+#   and wrangle the data for this project.
 #
 
-# Load required libraries
-library(tidyverse)
-library(magrittr)
-
-##########################
-# Data loading/wrangling #
-##########################
-
-# Get target (i.e., 'y') values and assign the labels in the file
-# 'activity_labels.txt' to the corresponding activity code. Returns a data frame
-# of activitie labels.
+# Get target (i.e., 'y') values and assign descriptive labels to the
+# corresponding activity code. Returns a data frame of activity labels.
 get_targets <- function(fpath) {
     read_lines(fpath) %>%
         enframe(name = NULL, value = 'activity_code') %>%
@@ -27,7 +18,7 @@ get_targets <- function(fpath) {
         select(activity)
 }
 
-# Get subject IDs. Returns a data frame
+# Get subject IDs. Returns a data frame.
 get_sub_ids <- function(fpath) {
     read_lines(fpath) %>% enframe(name = NULL, value = 'subject_id')
 }
