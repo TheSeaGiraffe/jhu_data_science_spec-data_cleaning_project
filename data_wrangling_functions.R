@@ -1,5 +1,5 @@
 #
-#   data_loading_functions.R - a script containing the functions used to load
+#   data_wrangling_functions.R - a script containing the functions used to load
 #   and wrangle the data for this project.
 #
 
