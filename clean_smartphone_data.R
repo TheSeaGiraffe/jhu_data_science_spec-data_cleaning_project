@@ -36,6 +36,8 @@ for (i in seq_along(train_test_data)) {
         list.files(train_test_data[i], full.names = T, pattern = '.txt$')
 
     # Get subject IDs, design matrix and targets
+    curr_data <- train_test_data[i] %>% str_extract('(?<=/).*$')
+    cat('Getting', curr_data, 'data...\n')
     subject_ids <- get_sub_ids(subject_file)
     targets <- get_targets(y_file)
     design_matrix <- get_design_matrix(x_file, req_features)
@@ -44,6 +46,8 @@ for (i in seq_along(train_test_data)) {
     # loaded_data
     loaded_data[[i]] <- bind_cols(subject_ids, design_matrix, targets)
 }
+
+cat('Tidying data...\n')
 
 # Combine the training and test data into a single data frame
 smartphone_data <- bind_rows(loaded_data)
@@ -60,9 +64,13 @@ smartphone_data %<>% group_by(subject_id, activity) %>% summarize_all(mean)
 # Clean up #
 ############
 
+cat('Cleaning up...\n')
+
 # Variables from this script
 rm(loaded_data, subject_ids, targets, design_matrix, req_features, data_dir,
    train_test_data, subject_file, x_file, y_file, i)
 
 # Functions loaded from the 'data_loading_functions.R' file
 rm(get_targets, get_sub_ids, get_required_features, get_design_matrix)
+
+cat('Done!\n')

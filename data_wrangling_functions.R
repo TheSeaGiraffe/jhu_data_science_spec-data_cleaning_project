@@ -31,8 +31,8 @@ get_required_features <- function(fpath) {
         map_chr(str_match, pattern = '.*(?:mean|std).*') %>%
         na.omit() %>%
         map_chr(str_remove, pattern = '\\(\\)') %>%
-        map_df(~ str_match(.x, pattern = '(\\d+)\\s(.*)')[, c(2, 3)] %>%
-               as.list() %>% set_names(c('index', 'feature_name')))
+        map_df(~ str_split(.x, pattern = ' ', simplify = T) %>% as.list() %>%
+               set_names(c('index', 'feature_name')))
     feature_names_req$index %<>% as.integer()
 
     feature_names_req
