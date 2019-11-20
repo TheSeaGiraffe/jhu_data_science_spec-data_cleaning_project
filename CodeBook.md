@@ -77,4 +77,19 @@ need to read the subject IDs from the `subject_*.txt` file and then combine them
 design matrix and the activity labels. You can see that this is done at the end of each
 iteration of the main loop.
 
+### Combining training and test sets
+
+At this point we should have data frames for both the training and test set. The next step
+is to combine them into a single data set which is done using the `bind_rows` `tidyverse`
+function rather than the user-defined functions we've been using up to this point. We also
+convert the `subject_id` and `activities` columns in the combined data set to factors in
+preparation for future analysis.
+
+### Summarizing the data by subject and activity
+
+The final step is to take the mean of each measurement by subject and activity. This is
+easily accomplished using the `tidyverse` `group_by` and `summarize_all` functions as can
+be seen in the last line of the data wrangling section of the code before the clean up
+section.
+
 ## Variable descriptions
