@@ -31,13 +31,15 @@ req_features <- get_required_features(file.path(data_dir, 'features.txt'))
 
 loaded_data <- list()
 for (i in seq_along(train_test_data)) {
+    curr_data_file <- train_test_data[i]
+    curr_data <- curr_data_file %>% str_extract('(?<=/).*$')
+    cat('Getting', curr_data, 'data...\n')
+
     # Get paths to all the necessary files
     c(subject_file, x_file, y_file) %<-%
-        list.files(train_test_data[i], full.names = T, pattern = '.txt$')
+        list.files(curr_data_file, full.names = T, pattern = '.txt$')
 
     # Get subject IDs, design matrix and targets
-    curr_data <- train_test_data[i] %>% str_extract('(?<=/).*$')
-    cat('Getting', curr_data, 'data...\n')
     subject_ids <- get_sub_ids(subject_file)
     targets <- get_targets(y_file)
     design_matrix <- get_design_matrix(x_file, req_features)

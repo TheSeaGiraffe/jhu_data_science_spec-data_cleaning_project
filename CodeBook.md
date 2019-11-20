@@ -48,4 +48,33 @@ The remaining code simply splits each string by the space separating the column 
 feature name, builds these components into a data frame, and converts all of the column
 indices to integers.
 
+### Replacing activity codes with corresponding labels
+
+In the original data set, the activities performed by each subject are encoded as integers
+in the interval `[1, 6]`. The zip archive of the data contains a file called
+`activity_labels.txt` that lists these encodings along with a string describing the
+activity indicated by the code. These labels are hard coded into the function
+`get_targets` which simply reads the `y_*.txt` file and replaces each numeric code with
+the associated label string.
+
+### Building training and test data frames
+
+The `train` and `test` subdirectories of the zip archive contain the files `X_*.txt`,
+`subject_*.txt` and `y_*.txt`. From the previous two sections, we now have the pieces
+needed to assemble data frames for both the training and test sets. Using the feature
+labels and their corresponding column indices it's easy to extract just the features that
+we need from the data contained in the `X_*.txt` file and then assign appropriate names to
+them. This process is carried out by the `get_design_matrix` function which does the
+following after reading the data from an `X_*.txt` file:
+
+1.  Select the required features by their column indices.
+2.  Assign the name associated with a column index to that column. This is done for each
+    feature in the resulting data frame.
+
+This entire process returns a data frame representing the design matrix for either the
+training or test set depending on the current loop iteration. Once this is done we simply
+need to read the subject IDs from the `subject_*.txt` file and then combine them with the
+design matrix and the activity labels. You can see that this is done at the end of each
+iteration of the main loop.
+
 ## Variable descriptions
