@@ -4,9 +4,9 @@
 #
 
 # Load the required packages
-library(tidyverse)
-library(magrittr)
-library(zeallot)
+cat('Loading libraries...\n')
+r_libs <- c('tidyverse', 'magrittr', 'zeallot')
+suppressMessages(sapply(r_libs, library, character.only = T))
 
 # Source the functions defined for this task
 source('tmp_data_cleaning_scripts/data_loading_functions.R')
@@ -59,8 +59,13 @@ smartphone_data %<>% mutate(subject_id = as.factor(subject_id),
                             activity = as.factor(activity))
 
 # Create final tidy data set by taking the mean of all variables for each
-# activity and each subject
+# activity and each subject and then renaming the columns to more accurately
+# reflect the values contained within them.
 smartphone_data %<>% group_by(subject_id, activity) %>% summarize_all(mean)
+new_col_names <- smartphone_data %>% names() %>%
+    map_chr(str_replace, pattern = '(?<=(mean(Freq)?|std|[XYZ])$)',
+            replace = '-mean')
+smartphone_data %<>% set_names(new_col_names)
 
 ############
 # Clean up #
@@ -70,7 +75,8 @@ cat('Cleaning up...\n')
 
 # Variables from this script
 rm(loaded_data, subject_ids, targets, design_matrix, req_features, data_dir,
-   train_test_data, subject_file, x_file, y_file, i)
+   train_test_data, subject_file, x_file, y_file, i, new_col_names, curr_data,
+   curr_data_file, r_libs)
 
 # Functions loaded from the 'data_loading_functions.R' file
 rm(get_targets, get_sub_ids, get_required_features, get_design_matrix)
