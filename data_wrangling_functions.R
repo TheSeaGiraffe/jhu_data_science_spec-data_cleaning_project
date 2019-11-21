@@ -10,8 +10,8 @@ get_targets <- function(fpath) {
         enframe(name = NULL, value = 'activity_code') %>%
         mutate(activity =
                case_when(activity_code == '1' ~ 'walking',
-                         activity_code == '2' ~ 'walking_upstairs',
-                         activity_code == '3' ~ 'walking_downstairs',
+                         activity_code == '2' ~ 'walking upstairs',
+                         activity_code == '3' ~ 'walking downstairs',
                          activity_code == '4' ~ 'sitting',
                          activity_code == '5' ~ 'standing',
                          activity_code == '6' ~ 'laying')) %>%

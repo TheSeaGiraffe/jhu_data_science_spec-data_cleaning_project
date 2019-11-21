@@ -89,7 +89,28 @@ preparation for future analysis.
 
 The final step is to take the mean of each measurement by subject and activity. This is
 easily accomplished using the `tidyverse` `group_by` and `summarize_all` functions as can
-be seen in the last line of the data wrangling section of the code before the clean up
-section.
+be seen in the block of code at the end of the data wrangling section of the code before
+the clean up section. In order to have the names of the columns better reflect the values
+contained in them we also slightly modified the column names by adding the string `-mean`
+to the ends of all of the columns containing measurement data.
 
 ## Variable descriptions
+
+Here we briefly describe each feature in the final tidy data set. The first two features
+are associated with the subjects:
+
+- `subject_id`: a numeric code in the range `[1, 30]` representing each of the 30
+  participants in this study.
+- `activity`: a label describing the activity performed by a subject. Measurements were
+  taken as each subject performed the following six activities:
+  + Laying down
+  + Sitting
+  + Standing
+  + Walking
+  + Walking upstairs
+  + Walking downstairs
+
+The remaining features are associated with the means of each measurement taken by the
+researchers. It should be noted that each of these values are themselves means taken
+across each activity for each subject hence the additional `-mean` added to each feature
+name. Below is a list of each of these features as well as a brief description:
