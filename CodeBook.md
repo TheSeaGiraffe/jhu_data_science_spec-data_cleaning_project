@@ -114,3 +114,101 @@ The remaining features are associated with the means of each measurement taken b
 researchers. It should be noted that each of these values are themselves means taken
 across each activity for each subject hence the additional `-mean` added to each feature
 name. Below is a list of each of these features as well as a brief description:
+
+- `tBodyAcc-mean-X-mean`: mean of the means of the raw accelerometer reading in the x-axis
+  attributable to the motion of a subject's body.
+- `tBodyAcc-mean-Y-mean`: mean of the means of the raw accelerometer reading in the y-axis
+  attributable to the motion of a subject's body.
+- `tBodyAcc-mean-Z-mean`: mean of the means of the raw accelerometer reading in the z-axis
+  attributable to the motion of a subject's body.
+- `tBodyAcc-std-X-mean`: mean of the standard deviations of the raw accelerometer reading
+  in the x-axis attributable to the motion of the subject's body.
+- `tBodyAcc-std-Y-mean`: mean of the standard deviations of the raw accelerometer reading
+  in the y-axis attributable to the motion of the subject's body.
+- `tBodyAcc-std-Z-mean`: mean of the standard deviations of the raw accelerometer reading
+  in the z-axis attributable to the motion of the subject's body.
+- `tGravityAcc-mean-X-mean`: mean of the means of the raw accelerometer reading in the
+  x-axis attributable to the effects of gravity.
+- `tGravityAcc-mean-Y-mean`: mean of the means of the raw accelerometer reading in the
+  y-axis attributable to the effects of gravity.
+- `tGravityAcc-mean-Z-mean`: mean of the means of the raw accelerometer reading in the
+  z-axis attributable to the effects of gravity.
+- `tGravityAcc-std-X-mean`: mean of the standard deviations of the raw accelerometer
+  reading in the x-axis attributable to the effects of gravity.
+- `tGravityAcc-std-Y-mean`: mean of the standard deviations of the raw accelerometer
+  reading in the y-axis attributable to the effects of gravity.
+- `tGravityAcc-std-Z-mean`: mean of the standard deviations of the raw accelerometer
+  reading in the z-axis attributable to the effects of gravity.
+- `tBodyAccJerk-mean-X-mean`: mean of the means of the jerk calculated from the
+  `tBodyAcc-mean-X` feature.
+- `tBodyAccJerk-mean-Y-mean`: mean of the means of the jerk calculated from the
+  `tBodyAcc-mean-Y` feature.
+- `tBodyAccJerk-mean-Z-mean`: mean of the means of the jerk calculated from the
+  `tBodyAcc-mean-Z` feature.
+- `tBodyAccJerk-std-X-mean`: mean of the standard deviations of the jerk calculated from
+  the `tBodyAcc-mean-X` feature.
+- `tBodyAccJerk-std-Y-mean`: mean of the standard deviations of the jerk calculated from
+  the `tBodyAcc-mean-Y` feature.
+- `tBodyAccJerk-std-Z-mean`: mean of the standard deviations of the jerk calculated from
+  the `tBodyAcc-mean-Z` feature.
+- `tBodyGyro-mean-X-mean`:
+- `tBodyGyro-mean-Y-mean`:
+- `tBodyGyro-mean-Z-mean`:
+- `tBodyGyro-std-X-mean`:
+- `tBodyGyro-std-Y-mean`:
+- `tBodyGyro-std-Z-mean`:
+- `tBodyGyroJerk-mean-X-mean`:
+- `tBodyGyroJerk-mean-Y-mean`:
+- `tBodyGyroJerk-mean-Z-mean`:
+- `tBodyGyroJerk-std-X-mean`:
+- `tBodyGyroJerk-std-Y-mean`:
+- `tBodyGyroJerk-std-Z-mean`:
+- `tBodyAccMag-mean-mean`:
+- `tBodyAccMag-std-mean`:
+- `tGravityAccMag-mean-mean`:
+- `tGravityAccMag-std-mean`:
+- `tBodyAccJerkMag-mean-mean`:
+- `tBodyAccJerkMag-std-mean`:
+- `tBodyGyroMag-mean-mean`:
+- `tBodyGyroMag-std-mean`:
+- `tBodyGyroJerkMag-mean-mean`:
+- `tBodyGyroJerkMag-std-mean`:
+- `fBodyAcc-mean-X-mean`:
+- `fBodyAcc-mean-Y-mean`:
+- `fBodyAcc-mean-Z-mean`:
+- `fBodyAcc-std-X-mean`:
+- `fBodyAcc-std-Y-mean`:
+- `fBodyAcc-std-Z-mean`:
+- `fBodyAcc-meanFreq-X-mean`:
+- `fBodyAcc-meanFreq-Y-mean`:
+- `fBodyAcc-meanFreq-Z-mean`:
+- `fBodyAccJerk-mean-X-mean`:
+- `fBodyAccJerk-mean-Y-mean`:
+- `fBodyAccJerk-mean-Z-mean`:
+- `fBodyAccJerk-std-X-mean`:
+- `fBodyAccJerk-std-Y-mean`:
+- `fBodyAccJerk-std-Z-mean`:
+- `fBodyAccJerk-meanFreq-X-mean`:
+- `fBodyAccJerk-meanFreq-Y-mean`:
+- `fBodyAccJerk-meanFreq-Z-mean`:
+- `fBodyGyro-mean-X-mean`:
+- `fBodyGyro-mean-Y-mean`:
+- `fBodyGyro-mean-Z-mean`:
+- `fBodyGyro-std-X-mean`:
+- `fBodyGyro-std-Y-mean`:
+- `fBodyGyro-std-Z-mean`:
+- `fBodyGyro-meanFreq-X-mean`:
+- `fBodyGyro-meanFreq-Y-mean`:
+- `fBodyGyro-meanFreq-Z-mean`:
+- `fBodyAccMag-mean-mean`:
+- `fBodyAccMag-std-mean`:
+- `fBodyAccMag-meanFreq-mean`:
+- `fBodyBodyAccJerkMag-mean-mean`:
+- `fBodyBodyAccJerkMag-std-mean`:
+- `fBodyBodyAccJerkMag-meanFreq-mean`:
+- `fBodyBodyGyroMag-mean-mean`:
+- `fBodyBodyGyroMag-std-mean`:
+- `fBodyBodyGyroMag-meanFreq-mean`:
+- `fBodyBodyGyroJerkMag-mean-mean`:
+- `fBodyBodyGyroJerkMag-std-mean`:
+- `fBodyBodyGyroJerkMag-meanFreq-mean`:
