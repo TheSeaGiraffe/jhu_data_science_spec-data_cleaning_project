@@ -37,12 +37,13 @@ This is important to note as the script assumes that this directory is a subdire
 the current directory. In order to run the script either copy the unpacked *UCI HAR
 Dataset* directory to the current directory or copy the `features.txt` file along with the
 `train` and `test` directories to a new directory that you've created in the current
-directory. From there, make sure that the R files listed above are in the current working
-directory before setting this directory to be the current R working environment. You can
-then run the `clean_smartphone_data.R` script by sourcing it and it will produce a tidy
-data frame (or more accurately, a tibble) called `smartphone_data`. More information on
-the transformations applied to the data as well as on the variables contained in
-`smartphone_data` can be found in the `CodeBook.md` file.
+directory. Make sure that this directory is named `data`. You can also modify the source
+code to use the name of your choosing. From there, make sure that the R files listed
+above are in the current working directory before setting this directory to be the current
+R working environment. You can then run the `clean_smartphone_data.R` script by sourcing
+it and it will produce a tidy data frame (or more accurately, a tibble) called
+`smartphone_data`. More information on the transformations applied to the data as well as
+on the variables contained in `smartphone_data` can be found in the `CodeBook.md` file.
 
 
 [1]: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
