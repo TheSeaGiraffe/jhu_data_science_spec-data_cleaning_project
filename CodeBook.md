@@ -36,17 +36,22 @@ function `get_required_features`. Looking at the defintion of this function in t
 `data_wraningling_functions.R` file, we can see that it first loads the `features.txt`
 file and performs the following three operations:
 
-1.  Extracts only the lines where the feature names have the word "mean" or "std" in them.
+1.  Extracts only the lines where the feature names have exactly the word "mean" or "std"
+    in them.
 2.  Removes any missing values in the resulting character vector.
 3.  Removes the parentheses from the feature name.
+
 
 This leaves us with a character vector whose elements are strings with the following form:
 
 `<col_index> <feature_name>`
 
-The remaining code simply splits each string by the space separating the column index and
-feature name, builds these components into a data frame, and converts all of the column
-indices to integers.
+The remaining code simply:
+
+1.  Splits each string by the space separating the column index and feature name
+2.  Builds these components into a data frame
+3.  Converts all hyphens ('-') in the `feature_names` column to underscores ('_')
+4.  Converts all of the column indices to integers
 
 ### Replacing activity codes with corresponding labels
 
@@ -91,7 +96,7 @@ The final step is to take the mean of each measurement by subject and activity. 
 easily accomplished using the `tidyverse` `group_by` and `summarize_all` functions as can
 be seen in the block of code at the end of the data wrangling section of the code before
 the clean up section. In order to have the names of the columns better reflect the values
-contained in them we also slightly modified the column names by adding the string `-mean`
+contained in them we also slightly modified the column names by adding the string `_mean`
 to the ends of all of the columns containing measurement data.
 
 ## Variable descriptions
@@ -112,103 +117,165 @@ are associated with the subjects:
 
 The remaining features are associated with the means of each measurement taken by the
 researchers. It should be noted that each of these values are themselves means taken
-across each activity for each subject hence the additional `-mean` added to each feature
+across each activity for each subject hence the additional `_mean` added to each feature
 name. Below is a list of each of these features as well as a brief description:
 
-- `tBodyAcc-mean-X-mean`: mean of the means of the raw accelerometer reading in the x-axis
-  attributable to the motion of a subject's body.
-- `tBodyAcc-mean-Y-mean`: mean of the means of the raw accelerometer reading in the y-axis
-  attributable to the motion of a subject's body.
-- `tBodyAcc-mean-Z-mean`: mean of the means of the raw accelerometer reading in the z-axis
-  attributable to the motion of a subject's body.
-- `tBodyAcc-std-X-mean`: mean of the standard deviations of the raw accelerometer reading
-  in the x-axis attributable to the motion of the subject's body.
-- `tBodyAcc-std-Y-mean`: mean of the standard deviations of the raw accelerometer reading
-  in the y-axis attributable to the motion of the subject's body.
-- `tBodyAcc-std-Z-mean`: mean of the standard deviations of the raw accelerometer reading
-  in the z-axis attributable to the motion of the subject's body.
-- `tGravityAcc-mean-X-mean`: mean of the means of the raw accelerometer reading in the
-  x-axis attributable to the effects of gravity.
-- `tGravityAcc-mean-Y-mean`: mean of the means of the raw accelerometer reading in the
-  y-axis attributable to the effects of gravity.
-- `tGravityAcc-mean-Z-mean`: mean of the means of the raw accelerometer reading in the
-  z-axis attributable to the effects of gravity.
-- `tGravityAcc-std-X-mean`: mean of the standard deviations of the raw accelerometer
-  reading in the x-axis attributable to the effects of gravity.
-- `tGravityAcc-std-Y-mean`: mean of the standard deviations of the raw accelerometer
-  reading in the y-axis attributable to the effects of gravity.
-- `tGravityAcc-std-Z-mean`: mean of the standard deviations of the raw accelerometer
-  reading in the z-axis attributable to the effects of gravity.
-- `tBodyAccJerk-mean-X-mean`: mean of the means of the jerk calculated from the
-  `tBodyAcc-mean-X` feature.
-- `tBodyAccJerk-mean-Y-mean`: mean of the means of the jerk calculated from the
-  `tBodyAcc-mean-Y` feature.
-- `tBodyAccJerk-mean-Z-mean`: mean of the means of the jerk calculated from the
-  `tBodyAcc-mean-Z` feature.
-- `tBodyAccJerk-std-X-mean`: mean of the standard deviations of the jerk calculated from
-  the `tBodyAcc-mean-X` feature.
-- `tBodyAccJerk-std-Y-mean`: mean of the standard deviations of the jerk calculated from
-  the `tBodyAcc-mean-Y` feature.
-- `tBodyAccJerk-std-Z-mean`: mean of the standard deviations of the jerk calculated from
-  the `tBodyAcc-mean-Z` feature.
-- `tBodyGyro-mean-X-mean`:
-- `tBodyGyro-mean-Y-mean`:
-- `tBodyGyro-mean-Z-mean`:
-- `tBodyGyro-std-X-mean`:
-- `tBodyGyro-std-Y-mean`:
-- `tBodyGyro-std-Z-mean`:
-- `tBodyGyroJerk-mean-X-mean`:
-- `tBodyGyroJerk-mean-Y-mean`:
-- `tBodyGyroJerk-mean-Z-mean`:
-- `tBodyGyroJerk-std-X-mean`:
-- `tBodyGyroJerk-std-Y-mean`:
-- `tBodyGyroJerk-std-Z-mean`:
-- `tBodyAccMag-mean-mean`:
-- `tBodyAccMag-std-mean`:
-- `tGravityAccMag-mean-mean`:
-- `tGravityAccMag-std-mean`:
-- `tBodyAccJerkMag-mean-mean`:
-- `tBodyAccJerkMag-std-mean`:
-- `tBodyGyroMag-mean-mean`:
-- `tBodyGyroMag-std-mean`:
-- `tBodyGyroJerkMag-mean-mean`:
-- `tBodyGyroJerkMag-std-mean`:
-- `fBodyAcc-mean-X-mean`:
-- `fBodyAcc-mean-Y-mean`:
-- `fBodyAcc-mean-Z-mean`:
-- `fBodyAcc-std-X-mean`:
-- `fBodyAcc-std-Y-mean`:
-- `fBodyAcc-std-Z-mean`:
-- `fBodyAcc-meanFreq-X-mean`:
-- `fBodyAcc-meanFreq-Y-mean`:
-- `fBodyAcc-meanFreq-Z-mean`:
-- `fBodyAccJerk-mean-X-mean`:
-- `fBodyAccJerk-mean-Y-mean`:
-- `fBodyAccJerk-mean-Z-mean`:
-- `fBodyAccJerk-std-X-mean`:
-- `fBodyAccJerk-std-Y-mean`:
-- `fBodyAccJerk-std-Z-mean`:
-- `fBodyAccJerk-meanFreq-X-mean`:
-- `fBodyAccJerk-meanFreq-Y-mean`:
-- `fBodyAccJerk-meanFreq-Z-mean`:
-- `fBodyGyro-mean-X-mean`:
-- `fBodyGyro-mean-Y-mean`:
-- `fBodyGyro-mean-Z-mean`:
-- `fBodyGyro-std-X-mean`:
-- `fBodyGyro-std-Y-mean`:
-- `fBodyGyro-std-Z-mean`:
-- `fBodyGyro-meanFreq-X-mean`:
-- `fBodyGyro-meanFreq-Y-mean`:
-- `fBodyGyro-meanFreq-Z-mean`:
-- `fBodyAccMag-mean-mean`:
-- `fBodyAccMag-std-mean`:
-- `fBodyAccMag-meanFreq-mean`:
-- `fBodyBodyAccJerkMag-mean-mean`:
-- `fBodyBodyAccJerkMag-std-mean`:
-- `fBodyBodyAccJerkMag-meanFreq-mean`:
-- `fBodyBodyGyroMag-mean-mean`:
-- `fBodyBodyGyroMag-std-mean`:
-- `fBodyBodyGyroMag-meanFreq-mean`:
-- `fBodyBodyGyroJerkMag-mean-mean`:
-- `fBodyBodyGyroJerkMag-std-mean`:
-- `fBodyBodyGyroJerkMag-meanFreq-mean`:
+Mean of the means of the raw accelerometer reading in the x-, y-, and z-axes attributable
+to the motion of a subject's body
+
+- `tBodyAcc_mean_X_mean`
+- `tBodyAcc_mean_Y_mean`
+- `tBodyAcc_mean_Z_mean`
+
+Mean of the standard deviations of the raw accelerometer reading in the x-, y-, and z-axes
+attributable to the motion of the subject's body
+
+- `tBodyAcc_std_X_mean`
+- `tBodyAcc_std_Y_mean`
+- `tBodyAcc_std_Z_mean`
+
+Mean of the means of the raw accelerometer reading in the x-, y-, and z-axes attributable
+to the effects of gravity
+
+- `tGravityAcc_mean_X_mean`
+- `tGravityAcc_mean_Y_mean`
+- `tGravityAcc_mean_Z_mean`
+
+Mean of the standard deviations of the raw accelerometer reading in the x-, y-, and z-axes
+attributable to the effects of gravity
+
+- `tGravityAcc_std_X_mean`
+- `tGravityAcc_std_Y_mean`
+- `tGravityAcc_std_Z_mean`
+
+Mean of the means of the jerk calulated from the `tBodyAcc_mean_*_mean` features
+
+- `tBodyAccJerk_mean_X_mean`
+- `tBodyAccJerk_mean_Y_mean`
+- `tBodyAccJerk_mean_Z_mean`
+
+Mean of the standard deviations of the jerk calculated from the `tBodyAcc_mean_*_mean`
+features
+
+- `tBodyAccJerk_std_X_mean`
+- `tBodyAccJerk_std_Y_mean`
+- `tBodyAccJerk_std_Z_mean`
+
+Mean of the means of the raw gyroscope reading in the x-, y-, and z-axes attributable to
+the motion of a subject's body
+
+- `tBodyGyro_mean_X_mean`
+- `tBodyGyro_mean_Y_mean`
+- `tBodyGyro_mean_Z_mean`
+
+Mean of the standard deviations of the raw gyroscope reading in the x-, y-, and z-axes
+attributable to the motion of a subject's body
+
+- `tBodyGyro_std_X_mean`
+- `tBodyGyro_std_Y_mean`
+- `tBodyGyro_std_Z_mean`
+
+Mean of the means of the jerk calculated from the `tBodyGyro_mean_*_mean` features
+
+- `tBodyGyroJerk_mean_X_mean`
+- `tBodyGyroJerk_mean_Y_mean`
+- `tBodyGyroJerk_mean_Z_mean`
+
+Mean of the standard deviations of the jerk calculated from the `tBodyGyro_mean_*_mean`
+features
+
+- `tBodyGyroJerk_std_X_mean`
+- `tBodyGyroJerk_std_Y_mean`
+- `tBodyGyroJerk_std_Z_mean`
+
+Mean and standard deviation of the means of the magnitude of the `tBodyAcc_mean_*_mean`
+variables calculated as the Euclidean norm
+
+- `tBodyAccMag_mean_mean`
+- `tBodyAccMag_std_mean`
+
+Mean and standard deviation of the means of the magnitude of the
+`tGravityAcc_mean_*_mean` variables calculated as the Euclidean norm
+
+- `tGravityAccMag_mean_mean`
+- `tGravityAccMag_std_mean`
+
+Mean and standard deviation of the means of the magnitude of the
+`tBodyAccJerk_mean_*_mean` variables calculated as the Euclidean norm
+
+- `tBodyAccJerkMag_mean_mean`
+- `tBodyAccJerkMag_std_mean`
+
+Mean and standard deviation of the means of the magnitude of the `tBodyGyro_mean_*_mean`
+variables calculated as the Euclidean norm
+
+- `tBodyGyroMag_mean_mean`
+- `tBodyGyroMag_std_mean`
+
+Mean and standard deviation of the means of the magnitude of the
+`tBodyGyroJerk_mean_*_mean` variables calculated as the Euclidean norm
+
+- `tBodyGyroJerkMag_mean_mean`
+- `tBodyGyroJerkMag_std_mean`
+
+Mean of the of means of the FFT processed accelerometer reading in the x-, y-, and z-axes
+attributable to the motion of a subject's body
+
+- `fBodyAcc_mean_X_mean`
+- `fBodyAcc_mean_Y_mean`
+- `fBodyAcc_mean_Z_mean`
+
+Standard deviation of the of means of the FFT processed accelerometer reading in the x-,
+y-, and z-axes attributable to the motion of a subject's body
+
+- `fBodyAcc_std_X_mean`
+- `fBodyAcc_std_Y_mean`
+- `fBodyAcc_std_Z_mean`
+
+Mean of the means of the FFT processed `tBodyAccJerk_mean_*_mean` features
+
+- `fBodyAccJerk_mean_X_mean`
+- `fBodyAccJerk_mean_Y_mean`
+- `fBodyAccJerk_mean_Z_mean`
+
+Standard deviation of the means of the FFT processed `tBodyAccJerk_mean_*_mean` features
+
+- `fBodyAccJerk_std_X_mean`
+- `fBodyAccJerk_std_Y_mean`
+- `fBodyAccJerk_std_Z_mean`
+
+Mean of the means of the FFT processed `tBodyGyro_mean_*_mean` features
+
+- `fBodyGyro_mean_X_mean`
+- `fBodyGyro_mean_Y_mean`
+- `fBodyGyro_mean_Z_mean`
+
+Standard deviation of the means of the FFT processed `tBodyGyro_mean_*_mean` features
+
+- `fBodyGyro_std_X_mean`
+- `fBodyGyro_std_Y_mean`
+- `fBodyGyro_std_Z_mean`
+
+Mean and standard deviation of the means of the FFT processed `tBodyAccMag_mean_*_mean`
+features
+
+- `fBodyAccMag_mean_mean`
+- `fBodyAccMag_std_mean`
+
+Mean and standard deviation of the means of the FFT processed `tBodyAccJerk_mean_*_mean`
+features
+
+- `fBodyBodyAccJerkMag_mean_mean`
+- `fBodyBodyAccJerkMag_std_mean`
+
+Mean and standard deviation of the means of the FFT processed `tBodyGyro_mean_*_mean`
+features
+
+- `fBodyBodyGyroMag_mean_mean`
+- `fBodyBodyGyroMag_std_mean`
+
+Mean and standard deviation of the means of the FFT processed `tBodyGyroJerk_mean_*_mean`
+features
+
+- `fBodyBodyGyroJerkMag_mean_mean`
+- `fBodyBodyGyroJerkMag_std_mean`

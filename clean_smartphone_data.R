@@ -9,7 +9,7 @@ r_libs <- c('tidyverse', 'magrittr', 'zeallot')
 suppressMessages(sapply(r_libs, library, character.only = T))
 
 # Source the functions defined for this task
-source('tmp_data_cleaning_scripts/data_loading_functions.R')
+source('data_wrangling_functions.R')
 
 #######################
 # Data wrangling prep #
@@ -63,8 +63,8 @@ smartphone_data %<>% mutate(subject_id = as.factor(subject_id),
 # reflect the values contained within them.
 smartphone_data %<>% group_by(subject_id, activity) %>% summarize_all(mean)
 new_col_names <- smartphone_data %>% names() %>%
-    map_chr(str_replace, pattern = '(?<=(mean(Freq)?|std|[XYZ])$)',
-            replace = '-mean')
+    map_chr(str_replace, pattern = '(?<=(mean|std|[XYZ])$)',
+            replace = '_mean')
 smartphone_data %<>% set_names(new_col_names)
 
 ############

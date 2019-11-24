@@ -28,11 +28,12 @@ get_sub_ids <- function(fpath) {
 # and its corresponding index.
 get_required_features <- function(fpath) {
     feature_names_req <- read_lines(fpath) %>%
-        map_chr(str_match, pattern = '.*(?:mean|std).*') %>%
-        na.omit() %>%
-        map_chr(str_remove, pattern = '\\(\\)') %>%
+        map_chr(~ str_match(.x, pattern = '(.*(?:mean|std))\\(\\)(.*)') %>%
+                            .[2:3] %>% paste(collapse = '')) %>%
+        grep(pattern = 'NA', value = T, invert = T) %>%
         map_df(~ str_split(.x, pattern = ' ', simplify = T) %>% as.list() %>%
-               set_names(c('index', 'feature_name')))
+               set_names(c('index', 'feature_name'))) %>%
+        mutate(feature_name = str_replace_all(feature_name, '-', '_'))
     feature_names_req$index %<>% as.integer()
 
     feature_names_req
