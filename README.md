@@ -21,27 +21,16 @@ I have divided the script into two files:
   `clean_smartphone_data.R` script.
 
 The script uses data from the *Human Activity Recognition Using Smartphones Data Set* that
-can be found [here.][1] The data is stored in a zip file which, when unpacked, will have a
-structure similar to the following diagram:
-
-```
-UCI HAR Dataset
-├ test
-│   └ Inertial Signals
-└ train
-    └ Inertial Signals
-```
+can be found [here.][1] The data is stored in a zip file which, when unpacked, will
+contain a directory called *UCI HAR Dataset* along with some additional files.
 
 This is important to note as the script assumes that this directory is a subdirectory of
-the current directory. In order to run the script either copy the unpacked *UCI HAR
-Dataset* directory to the current directory or copy the `features.txt` file along with the
-`train` and `test` directories to a new directory that you've created in the current
-directory. Make sure that this directory is named `data`. You can also modify the source
-code to use the name of your choosing. From there, make sure that the R files listed
-above are in the current working directory before setting this directory to be the current
-R working environment. You can then run the `run_analysis.R` script by sourcing it and it
-will produce a tidy data frame (or more accurately, a tibble) called `smartphone_data`.
-More information on the transformations applied to the data as well as on the variables
+the current directory. In order to run the script copy the unpacked *UCI HAR Dataset*
+directory to the current directory. From here, make sure that the R files listed above are
+in the current working directory before setting this directory to be the current R working
+environment. You can then run the `run_analysis.R` script by sourcing it and it will
+produce a tidy data frame (or more accurately, a tibble) called `smartphone_data`. More
+information on the transformations applied to the data as well as on the variables
 contained in `smartphone_data` can be found in the `CodeBook.md` file.
 
 

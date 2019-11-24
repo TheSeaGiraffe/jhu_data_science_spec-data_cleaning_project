@@ -1,6 +1,6 @@
 #
-#   clean_smartphone_data.R - a script to load and wrangle the data for this
-#   project with the goal of creating a tidy data set.
+#   run_analysis.R - a script to load and wrangle the data for this project with
+#   the goal of creating a tidy data set.
 #
 
 # Load the required packages
@@ -16,7 +16,7 @@ source('data_wrangling_functions.R')
 #######################
 
 # Get path to necessary files
-data_dir <- 'data'
+data_dir <- 'UCI HAR Dataset'
 train_test_data <- file.path(data_dir, c('train', 'test'))
 
 #########################
