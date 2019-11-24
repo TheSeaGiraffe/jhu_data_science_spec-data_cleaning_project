@@ -1,9 +1,9 @@
 # JHU Data Science Specialization - Getting and Cleaning Data Project
 
 This repository contains my Getting and Cleaning Data project submission. Here you will
-find the final tidy data set, the script used to create the data set, and a file detailing
-the entire process of creating this data set as well as information about the variables in
-the data set.
+find the script used to create the data set along with a file containing the associated
+data cleaning functions and a file detailing the entire process of creating this data set
+as well as information about the variables in the data set.
 
 ## Running the script
 
@@ -18,7 +18,7 @@ I have divided the script into two files:
 
 - `run_analysis.R`: this file is the script for performing the actual data wrangling.
 - `data_wrangling_functions.R`: this file contains the functions called in the
-  `clean_smartphone_data.R` script.
+  `run_analysis.R` script.
 
 The script uses data from the *Human Activity Recognition Using Smartphones Data Set* that
 can be found [here.][1] The data is stored in a zip file which, when unpacked, will
