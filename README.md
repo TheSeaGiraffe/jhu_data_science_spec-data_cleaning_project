@@ -16,8 +16,7 @@ session:
 
 I have divided the script into two files:
 
-- `clean_smartphone_data.R`: this file is the script for performing the actual data
-  wrangling.
+- `run_analysis.R`: this file is the script for performing the actual data wrangling.
 - `data_wrangling_functions.R`: this file contains the functions called in the
   `clean_smartphone_data.R` script.
 
@@ -40,10 +39,10 @@ Dataset* directory to the current directory or copy the `features.txt` file alon
 directory. Make sure that this directory is named `data`. You can also modify the source
 code to use the name of your choosing. From there, make sure that the R files listed
 above are in the current working directory before setting this directory to be the current
-R working environment. You can then run the `clean_smartphone_data.R` script by sourcing
-it and it will produce a tidy data frame (or more accurately, a tibble) called
-`smartphone_data`. More information on the transformations applied to the data as well as
-on the variables contained in `smartphone_data` can be found in the `CodeBook.md` file.
+R working environment. You can then run the `run_analysis.R` script by sourcing it and it
+will produce a tidy data frame (or more accurately, a tibble) called `smartphone_data`.
+More information on the transformations applied to the data as well as on the variables
+contained in `smartphone_data` can be found in the `CodeBook.md` file.
 
 
 [1]: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
